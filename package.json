@@ -19,5 +19,14 @@
   "bugs": {
     "url": "https://github.com/caioDelgado/battleship/issues"
   },
-  "homepage": "https://github.com/caioDelgado/battleship#readme"
+  "homepage": "https://github.com/caioDelgado/battleship#readme",
+  "dependencies": {
+    "awilix": "^2.9.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "fs": "0.0.1-security",
+    "mongoose": "^4.12.4",
+    "path": "^0.12.7"
+  }
 }

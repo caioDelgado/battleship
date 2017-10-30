@@ -19,4 +19,26 @@ module.exports = class GameService {
   	return this.gameModel
   	.create(args)
   }
+
+  initializeShips (params) {
+  	return this.gameModel.findById(params._id, (err, game) => {
+		if (err) return err
+		else {
+			const users = [
+	  			{
+	  				id: params.userId1,
+		  			life: params.life1,
+		  			ships: params.ships1
+		  		},
+		  		{
+		  			id: params.userId2,
+		  			life: params.life2,
+		  			ships: params.ships2
+		  		}
+	  		]
+			game.users = users
+			return game.save()	
+		}
+	})
+  }
 }

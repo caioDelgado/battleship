@@ -10,4 +10,10 @@ module.exports = (router, {GameServices: gameService}) => {
   	.then(result => res.status(200).json({data: result}))
   	.catch(next)
   })
+
+  router.put('/initializeShips', (req, res, next) => {
+  	gameService.initializeShips(req.body)
+  	.then(result => res.status(200).json({data: result}))
+  	.catch(next)
+  })
 }

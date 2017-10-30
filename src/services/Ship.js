@@ -15,7 +15,7 @@ module.exports = class ShipService {
 
 	updateShip (params) {
 
-		this.shipModel.findById(params._id, (err, ship) => {
+		return this.shipModel.findById(params._id, (err, ship) => {
 			if (err) return err
 			else {
 				ship.description = params.description || ship.description
@@ -24,11 +24,5 @@ module.exports = class ShipService {
 				return ship.save()	
 			}
 		})
-
-		const id = params._id
-		delete params._id
-
-		return this.shipModel
-		.findByIdAndUpdate(id, {$set: {params}})
 	}
 }

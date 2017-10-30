@@ -10,7 +10,6 @@ module.exports = class GameModel {
       users: [{
         _id: false,
         id: {type: this.mongoose.Schema.Types.ObjectId, ref: 'User'},
-        name: {type: String},
         life: {type: Number},
         ships: [{
           _id: false,

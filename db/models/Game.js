@@ -17,7 +17,8 @@ module.exports = class GameModel {
           life: {type: Number},
           coordinates: [{
             x: {type: Number},
-            y: {type: Number}
+            y: {type: Number},
+            hasHitten: {type: Boolean}
           }]
         }]
       }]    

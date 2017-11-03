@@ -16,4 +16,8 @@ module.exports = (router, {GameServices: gameService}) => {
   	.then(result => res.status(200).json({data: result}))
   	.catch(next)
   })
-}
+
+  router.put('/makeAMove', async (req, res, next) => {
+    res.status(200).json({data: await gameService.makeAMove(req.body)})
+  })
+} 

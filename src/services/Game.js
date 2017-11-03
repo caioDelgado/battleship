@@ -26,7 +26,7 @@ module.exports = class GameService {
   		else {
         game.users = game.users.map(user => {
           if (user.id == params.user) {
-            user.ships = params.ship
+            user.ships = params.ships
             user.life = params.life
           }
           return user
@@ -34,5 +34,30 @@ module.exports = class GameService {
         game.save()
   		}
   	})
+  }
+
+  async makeAMove (params) {
+    const game = await this.gameModel.findById(params._id)
+    let hit = 0
+    const users = game.users.map(user => {
+      if (user.id != params.user)
+        user.ships.map(ship => {
+          ship.coordinates.map(position => {
+            if (position.x == params.move.x && position.y == params.move.y) {
+              if (!position.hasHitten){
+                position.hasHitten = true
+                hit = 1
+              } else hit = 2
+            }
+            return position
+          })
+          if(hit === 1) ship.life--
+          return ship
+        })
+      if(hit === 1) user.life--
+      return user
+    })
+    await this.gameModel.findByIdAndUpdate(params._id, {$set: {users: users}})
+    return hit
   }
 }

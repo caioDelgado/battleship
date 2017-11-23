@@ -12,4 +12,14 @@ module.exports = class UserService {
 		return this.userModel
 		.create(params)
 	}
+
+	getUserById (id) {
+		return this.userModel
+		.findById(id)
+	}
+
+	verify (params) {
+		return this.userModel
+		.findOne({user: params.user, password: params.password})
+	}
 }

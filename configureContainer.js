@@ -4,8 +4,8 @@ const externalDependencies = require('./dependencies/external')
 const internalDependencies = require('./dependencies/internal')
 
 container.loadModules([
-	'src/services/*.js',
-	'db/models/*.js'
+	`${__dirname}/src/services/*.js`,
+	`${__dirname}/db/models/*.js`
 ], {
 	formatName: (name, descriptor) => {
 		const splat = descriptor.path.split('\\')
